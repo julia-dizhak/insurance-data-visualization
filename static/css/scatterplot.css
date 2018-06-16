@@ -1,0 +1,27 @@
+.container {
+    padding: 60px 0;
+    /* margin: auto; */
+    text-align: center;
+}
+#scatterPlot {
+
+}
+
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #eee;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-size: 11px;
+    fill: #ccc;
+}
+
+.legend {
+    color: #ccc;
+    padding: 15px 0 0 0;
+    text-align: center;
+}

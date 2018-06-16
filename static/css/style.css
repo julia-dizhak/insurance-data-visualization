@@ -1,0 +1,14 @@
+body {
+    /* background: #000; */
+}
+
+.bubbleChart {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .bubbleChart svg {
+      width: 50%;
+      height: 80%;
+    /* background: #000000; */
+  }
