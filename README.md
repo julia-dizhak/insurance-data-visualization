@@ -1,15 +1,19 @@
 # insurance-data-visualization
 
-team called "Risk score"
+## "Risk score" team
 
 [demo](https://julia-dizhak.github.io/insurance-data-visualization/index.html)
 
+[presentation](https://julia-dizhak.github.io/insurance-data-visualization/docs/Risk-Score.pptx)
+
 [data](https://julia-dizhak.github.io/insurance-data-visualization/docs/data.txt)
 
-[presentation](https://julia-dizhak.github.io/insurance-data-visualization/docs/Risk-Score.ppt)
 
 ## idea
 ...
 
 ## requirements
 * Chrome Version 67
+
+### Todo
+* use voice recognition to choose activity
