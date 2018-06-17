@@ -157,15 +157,34 @@
         .attr("width", 80)
         .attr("height", 80);
 
-    images.on("click", function(element) {
+    images.on("click", function(element, index) {
         const active = d3.select(this);
         const $price = $('#total-price');
 
-        // array1.forEach(function(element) {
+        //debugger;
+        let priceArrays = [];
+
+        // priceArrays.forEach(element => {
         //     console.log(element);
-        //   });
+        // });
+        
+
+        //priceArrays.push(element[2]);
+
+        //let price = element[2];
+
+        //console.log(priceArrays);
+
 
         $price.text(element[2]);
+        let total = element[2];
+
+        // savings
+        const $saveCostElement = $('#save-price');
+        const discount = 0.15;
+        let saveCost = total*discount;
+        total = total - saveCost;
+        $saveCostElement.text(total);
 
         active.transition()
             .duration(1000)
@@ -213,7 +232,7 @@
         })
         .attr("font-family", "sans-serif")
         .attr("font-size", "16px")
-        .attr("fill", "#505143")
+        .attr("fill", "#4066B3")
     
 
     const xAxis = d3.axisBottom(xScale)
@@ -333,4 +352,6 @@
     //         .text(selectValue + ' is the last selected option.')
     // };
 
+
+    
 })();
