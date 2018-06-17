@@ -4,7 +4,7 @@
 
 [demo](https://julia-dizhak.github.io/insurance-data-visualization/index.html)
 
-[presentation](https://julia-dizhak.github.io/insurance-data-visualization/docs/Risk-Score.pptx)
+[presentation](https://julia-dizhak.github.io/insurance-data-visualization/docs/Risk-Score.pdf)
 
 [data](https://julia-dizhak.github.io/insurance-data-visualization/docs/data.txt)
 
