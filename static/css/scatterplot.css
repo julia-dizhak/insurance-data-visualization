@@ -12,24 +12,38 @@ body {
     text-align: center;
 }
 
-.display-box {
+.container .display-box {
     height: 100%;
     padding: 0;
     margin: 0;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
 }
-.item {
-    
+@media (min-width: 768px) {
+    .display-box {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
 }
+/* @media (max-width: 768px) {
+    .display-box {
+        display: block;
+    }
+} */
+
 .chart {
     width: 700px;
     height: 500px;
+    
+}
+@media (max-width: 768px) { 
+    .chart {
+        margin: auto;
+    }
 }
 
 .active {

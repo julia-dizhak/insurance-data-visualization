@@ -8,7 +8,7 @@
             '', 
             'static/svg/user.svg', 
             'static/svg/user.svg', 
-            'user story'
+            'I need'
         ], 
         // 1 - car
         [
@@ -163,16 +163,22 @@
         const $price = $('#total-price');
 
         priceArrays.push(element[2]);
+        let sum = priceArrays.reduce((a, b) => a + b, 0);
+        const sumFormat = sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "'");
+       
 
-        let totalElement = $price.text(priceArrays.reduce((a, b) => a + b, 0));
-        let totalPrice = Number(totalElement.text());
+        let totalElement = $price.text(sumFormat);
+        let totalPrice = Number(sum);
 
         // savings
         const $saveCostElement = $('#save-price');
         const discount = 0.15;
         let saveCost = totalPrice * discount;
         totalPrice = totalPrice - saveCost;
-        $saveCostElement.text(totalPrice);
+
+        const totalPriceFormat = totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "'");
+    
+        $saveCostElement.text(totalPriceFormat);
 
         active.transition()
             .duration(1000)
