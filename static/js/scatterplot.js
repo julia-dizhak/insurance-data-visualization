@@ -190,8 +190,11 @@
             const type = datum[5];
             return type;
         })
-        .attr('dx', function (datum) {
-            return xScale(datum[0]) - 40;
+        .attr('dx', function(datum, index) {
+            if (index === 0) {
+                return xScale(datum[0]) - 30;
+            }
+            return xScale(datum[0]) - 45;
         })
         .attr('dy', function (datum) {
             return yScale(datum[1]) + 55;
@@ -219,7 +222,7 @@
             return yScale(datum[1]) + 75;
         })
         .attr("font-family", "sans-serif")
-        .attr("font-size", "16px")
+        .attr("font-size", "18px")
         .attr("fill", "#4066B3")
     
 

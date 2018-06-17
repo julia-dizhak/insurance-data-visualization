@@ -87,6 +87,10 @@ select {
     font-size: 14px;
 }
 
+.node {
+    cursor: pointer;
+}
+
 .axis path,
 .axis line {
     fill: none;
