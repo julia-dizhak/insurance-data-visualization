@@ -11,17 +11,30 @@
 </head>
 <body>
     <div class="container">
-        <div id="scatterPlot"></div>
+        <div class="display-flex">
+            <div class="chart">
+                <div id="scatterPlot"></div>
+            </div>
+            <div class="query">
+                <select name="" id="queryInsurances">
+                    <option value="0" selected="selected">all</option> 
+                    <option value="1">activity - car insurance</option>
+                    <option value="2">activity - have a pet</option>
+                    <option value="3">life insurance</option>
+                    <option value="4">house insurance</option>
+                    <option value="5">general liability</option>
+                    <option value="6">boat insurance</option>
+                </select> 
+            </div>
+        </div>
+       
+
+        <!-- <div id="queryInsurances"> -->
+            
+        <!-- </div> -->
 
         <div>
-            <select name="" id="">
-                <option value="0">car insurance</option>
-                <option value="1">pet insurance</option>
-                <option value="2">life insurance</option>
-                <option value="3">house insurance</option>
-                <option value="4">general liability</option>
-                <option value="5">boat insurance</option>
-            </select>
+
         </div>
     </div>
     

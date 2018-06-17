@@ -1,8 +1,20 @@
 (function () {
 
     const dataset = [
-        [150, 150, 4000],
+        [200, 200, 4000],
         [75, 150, 2000],
+        [250, 150, 2000],
+        [150, 250, 2000],
+        [150, 50, 2000],
+        [100, 215, 2000],
+        [100, 75, 2000],
+        [400, 400, 1],
+        [0, 0, 1],
+    ];
+
+    const dataset1 = [
+        [0, 0, 10],
+        [0, 0, 1],
         [250, 150, 2000],
         [150, 250, 2000],
         [150, 50, 2000],
@@ -36,50 +48,73 @@
         .domain([0, d3.max(dataset, datum => datum[1])])
         .range([2, 5]);
 
-    svg.selectAll('circle')
+    // const circle = svg.selectAll('circle')
+    //     .data(dataset)
+    //     .enter()
+    //     .append('circle')
+    //     .attr('fill', function(datum, index) {
+    //         if (index === 0) {
+    //             return "transparent";
+    //         }
+    //         if (index === 1) {
+    //             return "red";
+    //         }
+    //         if (index === 2) {
+    //             return "green";
+    //         }
+    //         if (index === 3) {
+    //             return "blue";
+    //         }
+    //         if (index === 4) {
+    //             return "orange";
+    //         }
+    //         if (index === 5) {
+    //             return "yellow";
+    //         }
+    //         if (index === 6) {
+    //             return "#fff";
+    //         }
+    //         if (index === 7) {
+    //             return "lightblue";
+    //         }
+    //     })
+
+    //     .attr('cx', function(datum) {
+    //         return xScale(datum[0]);
+    //     })
+    //     .attr('cy', function(datum) {
+    //         return yScale(datum[1]);
+    //     })
+    //     //.transition()
+    //     //.delay((datum) => datum * 2)
+    //     //.duration(800)
+    //     .attr('r', function (datum) {
+    //         return rScale(datum[2]);
+    //     });
+
+
+    const images = svg.selectAll(".node")
         .data(dataset)
         .enter()
-        .append('circle')
-        //.attr('fill', '#ccc')
-        .attr('fill', function(datum, index) {
-            if (index === 0) {
-                return "#ccc";
-            }
-            if (index === 1) {
-                return "red";
+        .append("g")
+        .attr("class", "node")
+        .append("image")
+        .attr("xlink:href", function(datum, index){
+            if (index === 3) {
+                return 'static/svg/mortgage.svg'
             }
             if (index === 2) {
-                return "green";
-            }
-            if (index === 3) {
-                return "blue";
-            }
-            if (index === 4) {
-                return "orange";
-            }
-            if (index === 5) {
-                return "yellow";
-            }
-            if (index === 6) {
-                return "#fff";
-            }
-            if (index === 7) {
-                return "lightblue";
+                return 'static/svg/pet.svg'
             }
         })
-
-        .attr('cx', function(datum) {
-            return xScale(datum[0]);
+        .attr('x', function(datum) {
+            return xScale(datum[0]) - 40;
         })
-        .attr('cy', function(datum) {
-            return yScale(datum[1]);
+        .attr('y', function(datum) {
+            return yScale(datum[1]) - 40;
         })
-        //.transition()
-        //.delay((datum) => datum * 2)
-        //.duration(800)
-        .attr('r', function (datum) {
-            return rScale(datum[2]);
-        });
+        .attr("width", 80)
+        .attr("height", 80);
 
     svg.selectAll('text')
         .data(dataset)
@@ -88,7 +123,7 @@
         .text(function(datum, index) {
             //return datum[0] + ',' + datum[1]
             //console.log(datum);
-            console.log(index);
+            //console.log(index);
             //console.log(datum[0])
             if (index === 0) {
                 return "person"
@@ -108,7 +143,7 @@
             if (index === 5) {
                 return "general liability"
             }
-            if (index === 7) {
+            if (index === 6) {
                 return "boat insurance"
             }
         })
@@ -136,6 +171,97 @@
     svg.append("g")
         .attr("transform", "translate(" + 0 + ", 0)")
         .attr('class', 'axis')
-        .call(yAxis)
+        .call(yAxis);
+
+
+    function updateData(data) {
+        svg.selectAll('circle')
+        .data(data)
+        .enter()
+        .append('circle')
+        .attr('cx', function(datum) {
+            return xScale(datum[0]);
+        })
+        .attr('cy', function(datum) {
+            return yScale(datum[1]);
+        })
+        .attr('r', function (datum) {
+            return rScale(datum[2]);
+        });
+    } 
+
+    function xChange(data) {
+        let value = this.value;
+        console.log(value);
+        
+        // const xScale = d3.scaleLinear()
+        //    .domain([0, d3.max(data, datum => datum[0])]);
+        //xAxis.scale(xScale) 
+        d3.selectAll('circle') 
+          //.transition()
+          //.duration(1000)
+          //.delay(function (d,i) { return i*100})
+          .attr('cx',function(datum) { return xScale(datum[0]) })
+          .attr('y', function(datum) {
+            return yScale(datum[1]);
+          })
+          .attr('r', function(datum) {
+            return rScale(datum[2]);
+        });
+    }
+
+
+    d3.select("#queryInsurances").on("change", function() {
+        let query = d3.select(this).property('value');
+       
+        if (query == 1) {
+            //let d = d3.select(this).property('data');
+            console.log(query);
+            //updateData(dataset1);
+            xChange(data=dataset1);
+            debugger;
+        }
+
+        // if (v == 30) {
+        //   update(dataset3)
+        // }
+        // if (v == 7) {
+        //   update(dataset2)
+        // }
+        // if (v == 1) {
+        //   update(dataset)
+        // }
+        
+    });  
+    
+    const insuranceData = [
+        "car insurance", 
+        "pet insurance", 
+        'life insurance',
+        'house insurance',
+        'general liability',
+        'boat insurance'
+    ];
+
+    const select = d3.select('#queryInsurances')
+        .append('select')
+        .attr('class','select')
+        .on('change',onchange)
+
+    const options = select
+        .selectAll('option')
+        .data(insuranceData)
+        .enter()
+        .append('option')
+        .text(function (d) { 
+            return d; 
+        });
+
+    function onchange() {
+        selectValue = d3.select('select').property('value')
+        d3.select('body')
+            .append('p')
+            .text(selectValue + ' is the last selected option.')
+    };
 
 })();
