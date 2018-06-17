@@ -151,12 +151,21 @@
         .attr('y', function(datum) {
             return yScale(datum[1]) - 40;
         })
+        .attr('data', function(datum) {
+            return datum[2];
+        })
         .attr("width", 80)
         .attr("height", 80);
 
-    images.on("click", function() {
+    images.on("click", function(element) {
         const active = d3.select(this);
-        console.log(this);
+        const $price = $('#total-price');
+
+        // array1.forEach(function(element) {
+        //     console.log(element);
+        //   });
+
+        $price.text(element[2]);
 
         active.transition()
             .duration(1000)
@@ -173,7 +182,6 @@
         .text(function(datum, index) {
             const type = datum[5];
             return type;
-            
         })
         .attr('dx', function (datum) {
             return xScale(datum[0]) - 40;
@@ -192,6 +200,9 @@
         .enter()
         .append('text')
         .text(function(datum, index) {
+            if (index === 0) {
+                return '';
+            }
             return datum[2] + ' CHF';
         })
         .attr('x', function (datum) {
