@@ -27,6 +27,15 @@ body {
 .item {
     
 }
+.chart {
+    width: 700px;
+    height: 500px;
+}
+
+.active {
+    border: 1px solid green;
+    border-radius: 50%;
+}
 
 .query {
     margin: 0 0 0 130px;

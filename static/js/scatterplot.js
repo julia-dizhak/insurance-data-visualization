@@ -1,10 +1,42 @@
 (function () {
 
     const dataset = [
-        [300, 300, 300], // 0 - user
-        [100, 300, 10], // 1 - car
-        [500, 300, 10], // 2 - pet
-        [300, 525, 2000], // 3 - house
+        // 0 - user
+        [
+            300, 
+            300, 
+            '', 
+            'static/svg/user.svg', 
+            'static/svg/user.svg', 
+            'user story'
+        ], 
+        // 1 - car
+        [
+            100, 
+            300, 
+            1000, 
+            'static/svg/car.svg', 
+            'static/svg/car-active.svg',
+            'car insurance'
+        ], 
+        // 2 - pet
+        [
+            500, 
+            300, 
+            800, 
+            'static/svg/pet.svg',
+            'static/svg/pet-active.svg',
+            'pet insurance'
+        ], 
+        // 3 - house
+        [
+            300, 
+            525, 
+            2000, 
+            'static/svg/house.svg',
+            'static/svg/house-active.svg',
+            'house insurance'
+        ], 
        // [150, 50, 2000],
        // [100, 215, 2000],
         //[100, 75, 2000],
@@ -12,6 +44,17 @@
         [0, 0, 1],
     ];
 
+      // if (index === 1) {
+           
+            // if (index === 4) {
+            //     return "life insurance"
+            // }
+            // if (index === 5) {
+            //     return "general liability"
+            // }
+            // if (index === 6) {
+            //     return "boat insurance"
+            // }
     const dataset1 = [
         [0, 0, 10],
         [0, 0, 1],
@@ -100,19 +143,7 @@
         .attr("class", "node")
         .append("image")
         .attr("xlink:href", function(datum, index) {
-            if (index === 0) {
-                return 'static/svg/user.svg'
-            }
-            if (index === 1) {
-                return 'static/svg/car.svg'
-            }
-            if (index === 2) {
-                return 'static/svg/pet.svg'
-            }
-            if (index === 3) {
-                return 'static/svg/house.svg'
-            }
-            
+            return datum[3];
         })
         .attr('x', function(datum) {
             return xScale(datum[0]) - 40;
@@ -123,36 +154,26 @@
         .attr("width", 80)
         .attr("height", 80);
 
-    svg.selectAll('text')
+    images.on("click", function() {
+        const active = d3.select(this);
+        console.log(this);
+
+        active.transition()
+            .duration(1000)
+            .attr("xlink:href", function(datum, index) {
+                return datum[4];
+            })
+            active.attr("class", "active")
+    });     
+
+   const types = svg.selectAll('text')
         .data(dataset)
         .enter()
         .append('text')
         .text(function(datum, index) {
-            //return datum[0] + ',' + datum[1]
-            //console.log(datum);
-            //console.log(index);
-            //console.log(datum[0])
-            if (index === 0) {
-                return "user story"
-            }
-            if (index === 1) {
-                return "car insurance"
-            }
-            if (index === 2) {
-                return "pet insurance"
-            }
-            if (index === 3) {
-                return "house insurance"
-            }
-            if (index === 4) {
-                return "life insurance"
-            }
-            if (index === 5) {
-                return "general liability"
-            }
-            if (index === 6) {
-                return "boat insurance"
-            }
+            const type = datum[5];
+            return type;
+            
         })
         .attr('dx', function (datum) {
             return xScale(datum[0]) - 40;
@@ -164,6 +185,25 @@
         .attr("font-family", "sans-serif")
         .attr("font-size", "13px")
         .attr("fill", "#505143")
+
+    // price
+    const prices = svg.selectAll('rect')
+        .data(dataset)
+        .enter()
+        .append('text')
+        .text(function(datum, index) {
+            return datum[2] + ' CHF';
+        })
+        .attr('x', function (datum) {
+            return xScale(datum[0]) - 20;
+        })
+        .attr('y', function (datum) {
+            return yScale(datum[1]) + 75;
+        })
+        .attr("font-family", "sans-serif")
+        .attr("font-size", "16px")
+        .attr("fill", "#505143")
+    
 
     const xAxis = d3.axisBottom(xScale)
         .ticks(8);
