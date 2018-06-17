@@ -59,7 +59,7 @@
     const circleData = [
         [300, 300, 44000],
         [300, 300, 35000],
-        [300, 300, 25000],
+        [300, 300, 22000],
         [350, 350, 600],
         [150, 300, 600],
         [450, 200, 600]
@@ -115,6 +115,15 @@
         })    
 
         .attr('fill', function(datum, index) {
+            if (index === 0) {
+                return "transparent";
+            }
+            if (index === 1) {
+                return "#aac0ec";
+            }
+            if (index === 2) {
+                return "#7ea3ec";
+            }
             if (index === 3) {
                 return "#000";
             }
