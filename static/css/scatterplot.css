@@ -60,7 +60,7 @@ body {
 .price div {
     display: inline-block;
     vertical-align: baseline;
-    min-width: 55px;
+    min-width: 60px;
     text-align: right;
 }
 .price span {
@@ -111,14 +111,14 @@ select {
     stroke: #eee;
     shape-rendering: crispEdges;
 
-    stroke: transparent;
+    /* stroke: transparent; */
 }
 
 .axis text {
     font-size: 11px;
     fill: #ccc;
 
-    fill: transparent;
+    /* fill: transparent; */
 }
 
 .legend {

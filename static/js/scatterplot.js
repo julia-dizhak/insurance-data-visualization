@@ -37,6 +37,15 @@
             'static/svg/house-active.svg',
             'house insurance'
         ], 
+        // 4 - personal liability
+        [
+            300, 
+            100, 
+            700, 
+            'static/svg/umbrella.svg',
+            'static/svg/umbrella-active.svg',
+            'personal liability'
+        ],
        // [150, 50, 2000],
        // [100, 215, 2000],
         //[100, 75, 2000],
@@ -198,7 +207,7 @@
         })
         .attr('dx', function(datum, index) {
             if (index === 0) {
-                return xScale(datum[0]) - 30;
+                return xScale(datum[0]) - 20;
             }
             return xScale(datum[0]) - 45;
         })
