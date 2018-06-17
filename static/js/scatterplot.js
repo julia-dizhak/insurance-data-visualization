@@ -1,14 +1,14 @@
 (function () {
 
     const dataset = [
-        [200, 200, 4000],
+        [250, 250, 4000],
         [75, 150, 2000],
-        [250, 150, 2000],
-        [150, 250, 2000],
+        [400, 250, 2000], // pet
+        [250, 425, 2000], // house
         [150, 50, 2000],
         [100, 215, 2000],
         [100, 75, 2000],
-        [400, 400, 1],
+        [500, 500, 1],
         [0, 0, 1],
     ];
 
@@ -99,13 +99,17 @@
         .append("g")
         .attr("class", "node")
         .append("image")
-        .attr("xlink:href", function(datum, index){
-            if (index === 3) {
-                return 'static/svg/mortgage.svg'
+        .attr("xlink:href", function(datum, index) {
+            if (index === 0) {
+                return 'static/svg/user.svg'
             }
             if (index === 2) {
                 return 'static/svg/pet.svg'
             }
+            if (index === 3) {
+                return 'static/svg/house.svg'
+            }
+            
         })
         .attr('x', function(datum) {
             return xScale(datum[0]) - 40;
@@ -148,7 +152,7 @@
             }
         })
         .attr('x', function (datum) {
-            return xScale(datum[0]);
+            return xScale(datum[0]) - 10;
         })
         .attr('y', function (datum) {
             return yScale(datum[1]);
