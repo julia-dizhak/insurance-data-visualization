@@ -1,0 +1,88 @@
+# Load required packages
+install.packages("xlsx")
+library(readxl)
+
+# Set working directory
+setwd("c:/Users/Afsoon/Desktop/HacknLead")
+#importdata
+dataZurich = read_excel("Sampledata_v2-3.xlsx")
+#dataZurich_noNA=read_excel("sampledata.xlsl", na.rm=TRUE)
+summary(dataZurich)
+str(dataZurich)
+typeof(dataZurich$MF)
+dataZurich$MF[0]
+dataZurich$AS[2]
+
+dataZurich$Cartheft=dataZurich$MF+dataZurich$AS
+#replace 0s with a random number between 0 to 50 and replace non-zeros with a random number between 50-100
+dataZurich$Cartheft<-ifelse(dataZurich$Cartheft == 0, runif(1,0,50), runif(1,50,100))
+summary(dataZurich$Cartheft)
+#plot.new()
+#par(mar=c(1,1,1,1))
+#boxplot(dataZurich$Cartheft)
+dataZurich$RiskCartheft=dataZurich$Cartheft*runif(1, 0, 100)
+summary(dataZurich$RiskCartheft)
+dataZurich$RiskCartheft[which.min(dataZurich$RiskCartheft)]
+#dataZurich$NRiskCartheft=dataZurich$RiskCartheft*((dataZurich$RiskCartheft-dataZurich$RiskCartheft[which.min(dataZurich$RiskCartheft)])/(dataZurich$RiskCartheft[which.max(dataZurich$RiskCartheft)]-dataZurich$RiskCartheft[which.min(dataZurich$RiskCartheft)]))
+dataZurich$NRiskCartheft=((dataZurich$RiskCartheft-min(dataZurich$RiskCartheft,na.rm=TRUE))/(max(dataZurich$RiskCartheft,na.rm=TRUE)-min(dataZurich$RiskCartheft,na.rm=TRUE)))
+
+
+dataZurich$CarAccident=dataZurich$PN
+#replace 0s with a random number between 0 to 50 and replace non-zeros with a random number between 50-100
+dataZurich$CarAccident<-ifelse(dataZurich$CarAccident == 0, runif(1,0,50), runif(1,50,100))
+#dataZurich$CarAccident<-runif(1,0,100)
+summary(dataZurich$CarAccident)
+dataZurich$RiskCarAccident=dataZurich$CarAccident*runif(1, 0, 100)
+summary(dataZurich$RiskCarAccident)
+#dataZurich$NRiskCarAccident=dataZurich$RiskCarAccident*((dataZurich$RiskCarAccident-dataZurich$RiskCarAccident[which.min(dataZurich$RiskCarAccident)])/(dataZurich$RiskCarAccident[which.max(dataZurich$RiskCarAccident)]-dataZurich$RiskCarAccident[which.min(dataZurich$RiskCarAccident)]))
+dataZurich$NRiskCarAccident=((dataZurich$RiskCarAccident-min(dataZurich$RiskCarAccident,na.rm=TRUE))/(max(dataZurich$RiskCarAccident,na.rm=TRUE)-min(dataZurich$RiskCarAccident,na.rm=TRUE)))
+summary(dataZurich$NRiskCarAccident)
+
+
+dataZurich$Travel=dataZurich$SL
+#replace 0s with a random number between 0 to 50 and replace non-zeros with a random number between 50-100
+dataZurich$Travel<-ifelse(dataZurich$Travel == 0, runif(1,0,50), runif(1,50,100))
+#dataZurich$Travel<- runif(1,0,100)
+dataZurich$RiskTravel=dataZurich$Travel*runif(1, 0, 100)
+summary(dataZurich$RiskTravel)
+dataZurich$RiskTravel[which.min(dataZurich$RiskTravel)]
+#dataZurich$NRiskTravel=dataZurich$RiskTravel*((dataZurich$RiskTravel-dataZurich$RiskTravel[which.min(dataZurich$RiskTravel)])/(dataZurich$RiskTravel[which.max(dataZurich$RiskTravel)]-dataZurich$RiskTravel[which.min(dataZurich$RiskTravel)]))
+dataZurich$NRiskTravel=((dataZurich$RiskTravel-min(dataZurich$RiskTravel,na.rm=TRUE))/(max(dataZurich$RiskTravel,na.rm=TRUE)-min(dataZurich$RiskTravel,na.rm=TRUE)))
+
+#dataZurich$HouseHold=dataZurich$AM
+#dataZurich$RiskHousehold=dataZurich$HouseHold*runif(1, 0, 100)
+#summary(dataZurich$RiskHousehold)
+
+dataZurich$HouseHold=dataZurich$KA
+#replace 0s with a random number between 0 to 50 and replace non-zeros with a random number between 50-100
+dataZurich$HouseHold<-ifelse(dataZurich$HouseHold == 0, runif(1,0,50), runif(1,50,100))
+#dataZurich$HouseHold<-runif(1,0,100)
+summary(dataZurich$HouseHold)
+dataZurich$RiskHousehold=dataZurich$HouseHold*runif(1, 0, 100)
+summary(dataZurich$RiskHousehold)
+dataZurich$NRiskHousehold=((dataZurich$RiskHousehold-min(dataZurich$RiskHousehold,na.rm=TRUE))/(max(dataZurich$RiskHousehold,na.rm=TRUE)-min(dataZurich$RiskHousehold,na.rm=TRUE)))
+summary(dataZurich$NRiskHousehold)
+
+#dataZurich$LegalProtection=dataZurich$RS
+#dataZurich$RiskLegalProtection=dataZurich$LegalProtection*runif(1, 0, 100)
+#summary(dataZurich$RiskLegalProtection)
+#dataZurich$NRiskLegalProtection=dataZurich$RiskLegalProtection*((dataZurich$RiskLegalProtection-0)/(240.595-0))
+
+
+dataZurich$PersonalLiability=dataZurich$SH
+#replace 0s with a random number between 0 to 50 and replace non-zeros with a random number between 50-100
+dataZurich$PersonalLiability<-ifelse(dataZurich$PersonalLiability == 0, runif(1,0,50), runif(1,50,100))
+summary(dataZurich$PersonalLiability)
+dataZurich$RiskPersonalLiability=dataZurich$PersonalLiability*runif(1, 0, 100)
+summary(dataZurich$RiskPersonalLiability)
+#dataZurich$NRiskPersonalLiability=dataZurich$RiskPersonalLiability*((dataZurich$RiskPersonalLiability-dataZurich$RiskPersonalLiability[which.min(dataZurich$RiskPersonalLiability)])/(dataZurich$RiskPersonalLiability[which.max(dataZurich$RiskPersonalLiability)]-dataZurich$RiskPersonalLiability[which.min(dataZurich$RiskPersonalLiability)]))
+dataZurich$NRiskPersonalLiability=((dataZurich$RiskPersonalLiability-min(dataZurich$RiskPersonalLiability,na.rm=TRUE))/(max(dataZurich$RiskPersonalLiability,na.rm=TRUE)-min(dataZurich$RiskPersonalLiability,na.rm=TRUE)))
+
+
+plot.new()
+par(mfrow=c(2,3))
+boxplot(dataZurich$NRiskPersonalLiability)
+boxplot(dataZurich$NRiskHousehold)
+boxplot(dataZurich$NRiskTravel)
+boxplot(dataZurich$RiskCarAccident)
+boxplot(dataZurich$NRiskCartheft)

@@ -122,6 +122,11 @@ form label {
     padding: 0;
     margin: 0;
 }
+
+.title span {
+    font-size: 13px;
+}
+
 .logo-zurich {
     display: inline-block;
     vertical-align: middle;
