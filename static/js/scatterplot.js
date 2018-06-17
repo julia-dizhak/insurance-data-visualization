@@ -57,9 +57,13 @@
     // "boat insurance"
     
     const circleData = [
-        [300, 300, 52000]
+        [300, 300, 44000],
+        [300, 300, 35000],
+        [300, 300, 25000],
+        [350, 350, 600],
+        [150, 300, 600]
     ];
-
+ 
     const dataset1 = [
         [0, 0, 10],
         [0, 0, 1],
@@ -102,8 +106,22 @@
         .append('g')
         .append('circle')
 
-        .style("stroke", "#000")
-        .style("fill", "transparent")
+        .attr('stroke', function(datum, index) {
+            if (index === 0) {
+                return "#000";
+            }
+            return '#ccc';
+        })    
+
+        .attr('fill', function(datum, index) {
+            if (index === 3) {
+                return "#000";
+            }
+            if (index === 4) {
+                return "#000";
+            }
+            return 'transparent';
+        }) 
 
         .attr('cx', function(datum) {
             return xScale(datum[0]);
@@ -114,10 +132,6 @@
         .attr('r', function (datum) {
             return rScale(datum[2]);
         });
-        // .attr('width', 800)
-        // .attr('height', 800);
-
-    console.log(circle);    
 
     // const circle = svg.selectAll('circle')
     //     .data(dataset)

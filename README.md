@@ -9,7 +9,7 @@
 [data](https://julia-dizhak.github.io/insurance-data-visualization/docs/data.txt)
 
 
-## idea
+## Idea
 This framework will allow users to have a clear and unified view of the Risks that they should be specifically concerned about, and therefore, propose them a personalized insurance coverage.
 
 The system uses clustering to propose a personalized risk landscape based on data from other customer choices, risk likelihood studies and claims information.
