@@ -51,6 +51,46 @@ body {
     border-radius: 50%;
 }
 
+form {
+    margin: 0 60px 0 0;
+    text-align: left;
+}
+fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+form input[type=text], input[type=number] {
+    cursor: pointer;
+    border-radius: 0;
+    border: 1px solid #a8a8aa;
+    padding: 11px 15px 11px;
+    font-size: 14px;
+    background-color: #fff;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    width: 160px;
+}
+form label {
+    display: block;
+    margin: 0 0 15px 0;
+    cursor: pointer;
+}
+
+.radio-wrap {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .price {
     display: inline-block;
     vertical-align: bottom;
@@ -111,14 +151,14 @@ select {
     stroke: #eee;
     shape-rendering: crispEdges;
 
-    /* stroke: transparent; */
+    stroke: transparent;
 }
 
 .axis text {
     font-size: 11px;
     fill: #ccc;
 
-    /* fill: transparent; */
+    fill: transparent;
 }
 
 .legend {
