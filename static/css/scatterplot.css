@@ -100,7 +100,7 @@ select {
     font-size: 11px;
     fill: #ccc;
 
-    fill: transparent
+    fill: transparent;
 }
 
 .legend {

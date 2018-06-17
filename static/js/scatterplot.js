@@ -157,34 +157,22 @@
         .attr("width", 80)
         .attr("height", 80);
 
+    let priceArrays = [];
     images.on("click", function(element, index) {
         const active = d3.select(this);
         const $price = $('#total-price');
 
-        //debugger;
-        let priceArrays = [];
+        priceArrays.push(element[2]);
 
-        // priceArrays.forEach(element => {
-        //     console.log(element);
-        // });
-        
-
-        //priceArrays.push(element[2]);
-
-        //let price = element[2];
-
-        //console.log(priceArrays);
-
-
-        $price.text(element[2]);
-        let total = element[2];
+        let totalElement = $price.text(priceArrays.reduce((a, b) => a + b, 0));
+        let totalPrice = Number(totalElement.text());
 
         // savings
         const $saveCostElement = $('#save-price');
         const discount = 0.15;
-        let saveCost = total*discount;
-        total = total - saveCost;
-        $saveCostElement.text(total);
+        let saveCost = totalPrice * discount;
+        totalPrice = totalPrice - saveCost;
+        $saveCostElement.text(totalPrice);
 
         active.transition()
             .duration(1000)
