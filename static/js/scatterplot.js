@@ -40,7 +40,7 @@
         // 4 - personal liability
         [
             300, 
-            100, 
+            120, 
             700, 
             'static/svg/umbrella.svg',
             'static/svg/umbrella-active.svg',
@@ -52,18 +52,14 @@
         //[600, 600, 1],
         [0, 0, 1],
     ];
+    
+    // "life insurance"
+    // "boat insurance"
+    
+    const circleData = [
+        [300, 300, 52000]
+    ];
 
-      // if (index === 1) {
-           
-            // if (index === 4) {
-            //     return "life insurance"
-            // }
-            // if (index === 5) {
-            //     return "general liability"
-            // }
-            // if (index === 6) {
-            //     return "boat insurance"
-            // }
     const dataset1 = [
         [0, 0, 10],
         [0, 0, 1],
@@ -78,8 +74,8 @@
     const margin = { top: 20, right: 30, bottom: 20, left: 40 },
         padding = 20;
 
-    const width = 700 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom;
+    const width = 720 - margin.left - margin.right,
+        height = 720 - margin.top - margin.bottom;
 
     const svg = d3.select('#scatterPlot')
         .append('svg')
@@ -99,6 +95,29 @@
     const rScale = d3.scaleLinear()
         .domain([0, d3.max(dataset, datum => datum[1])])
         .range([2, 5]);
+
+    const circle = svg.selectAll('circle')
+        .data(circleData)
+        .enter()
+        .append('g')
+        .append('circle')
+
+        .style("stroke", "#000")
+        .style("fill", "transparent")
+
+        .attr('cx', function(datum) {
+            return xScale(datum[0]);
+        })
+        .attr('cy', function(datum) {
+            return yScale(datum[1]);
+        })  
+        .attr('r', function (datum) {
+            return rScale(datum[2]);
+        });
+        // .attr('width', 800)
+        // .attr('height', 800);
+
+    console.log(circle);    
 
     // const circle = svg.selectAll('circle')
     //     .data(dataset)
