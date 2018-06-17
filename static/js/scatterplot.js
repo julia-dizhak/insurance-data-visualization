@@ -24,9 +24,9 @@
             500, 
             300, 
             800, 
-            'static/svg/pet.svg',
-            'static/svg/pet-active.svg',
-            'pet insurance'
+            'static/svg/airplane.svg',
+            'static/svg/airplane-active.svg',
+            'travel insurance'
         ], 
         // 3 - house
         [
