@@ -15,14 +15,15 @@
         <div class="display-box">
             <div class="item chart">
                 <div id="scatterPlot"></div>
+                <div id="dynamicScatterPlot"></div>
             </div>
             <div class="item query">
                 <select name="" id="queryInsurances">
                     <option value="0" selected="selected">all</option> 
                     <option value="1">activity - car insurance</option>
-                    <option value="2">activity - have a pet</option>
-                    <option value="3">life insurance</option>
-                    <option value="4">house insurance</option>
+                    <option value="2">activity - do you have a pet?</option>
+                    <option value="3">do you have a house? - house insurance</option>
+                    <option value="4">life insurance</option>
                     <option value="5">general liability</option>
                     <option value="6">boat insurance</option>
                 </select> 
@@ -41,8 +42,11 @@
     
     <script src="static/js/vendor/jquery-2.1.3.min.js"></script>
     <script src="static/js/vendor/lodash.js"></script>
+    
     <script src="static/js/vendor/d3.js"></script>
+    <script src="static/js/vendor/d3-fetch.v1.min.js"></script>
 
     <script src="static/js/scatterplot.js"></script>
+    <!-- <script src="static/js/scatterplot-dynamic.js"></script> -->
 </body>
 </html>

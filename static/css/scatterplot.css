@@ -8,6 +8,7 @@ body {
 }
 
 .container {
+    padding: 30px 0;
     text-align: center;
 }
 
@@ -27,17 +28,32 @@ body {
     
 }
 
+.query {
+    margin: 0 0 0 130px;
+}
+
+h1 {
+    padding: 0 0 45px 0;
+}
+
+select {
+    font-size: 14px;
+}
 
 .axis path,
 .axis line {
     fill: none;
     stroke: #eee;
     shape-rendering: crispEdges;
+
+    stroke: transparent;
 }
 
 .axis text {
     font-size: 11px;
     fill: #ccc;
+
+    fill: transparent
 }
 
 .legend {

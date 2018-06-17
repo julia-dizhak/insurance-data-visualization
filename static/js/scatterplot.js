@@ -1,14 +1,14 @@
 (function () {
 
     const dataset = [
-        [250, 250, 4000],
-        [75, 150, 2000],
-        [400, 250, 2000], // pet
-        [250, 425, 2000], // house
-        [150, 50, 2000],
-        [100, 215, 2000],
-        [100, 75, 2000],
-        [500, 500, 1],
+        [300, 300, 300], // 0 - user
+        [100, 300, 10], // 1 - car
+        [500, 300, 10], // 2 - pet
+        [300, 525, 2000], // 3 - house
+       // [150, 50, 2000],
+       // [100, 215, 2000],
+        //[100, 75, 2000],
+        //[600, 600, 1],
         [0, 0, 1],
     ];
 
@@ -93,7 +93,7 @@
     //     });
 
 
-    const images = svg.selectAll(".node")
+    let images = svg.selectAll(".node")
         .data(dataset)
         .enter()
         .append("g")
@@ -102,6 +102,9 @@
         .attr("xlink:href", function(datum, index) {
             if (index === 0) {
                 return 'static/svg/user.svg'
+            }
+            if (index === 1) {
+                return 'static/svg/car.svg'
             }
             if (index === 2) {
                 return 'static/svg/pet.svg'
@@ -130,7 +133,7 @@
             //console.log(index);
             //console.log(datum[0])
             if (index === 0) {
-                return "person"
+                return "user story"
             }
             if (index === 1) {
                 return "car insurance"
@@ -139,10 +142,10 @@
                 return "pet insurance"
             }
             if (index === 3) {
-                return "life insurance"
+                return "house insurance"
             }
             if (index === 4) {
-                return "house insurance"
+                return "life insurance"
             }
             if (index === 5) {
                 return "general liability"
@@ -151,15 +154,16 @@
                 return "boat insurance"
             }
         })
-        .attr('x', function (datum) {
-            return xScale(datum[0]) - 10;
+        .attr('dx', function (datum) {
+            return xScale(datum[0]) - 40;
         })
-        .attr('y', function (datum) {
-            return yScale(datum[1]);
+        .attr('dy', function (datum) {
+            return yScale(datum[1]) + 55;
         })
+        // .attr('dx', 10)
         .attr("font-family", "sans-serif")
-        .attr("font-size", "11px")
-        .attr("fill", "#ccccc")
+        .attr("font-size", "13px")
+        .attr("fill", "#505143")
 
     const xAxis = d3.axisBottom(xScale)
         .ticks(8);
@@ -194,37 +198,47 @@
         });
     } 
 
-    function xChange(data) {
-        let value = this.value;
-        console.log(value);
+    // function xChange(data) {
+    //     let value = this.value;
+    //     console.log(value);
         
-        // const xScale = d3.scaleLinear()
-        //    .domain([0, d3.max(data, datum => datum[0])]);
-        //xAxis.scale(xScale) 
-        d3.selectAll('circle') 
-          //.transition()
-          //.duration(1000)
-          //.delay(function (d,i) { return i*100})
-          .attr('cx',function(datum) { return xScale(datum[0]) })
-          .attr('y', function(datum) {
-            return yScale(datum[1]);
-          })
-          .attr('r', function(datum) {
-            return rScale(datum[2]);
-        });
-    }
+    //     // const xScale = d3.scaleLinear()
+    //     //    .domain([0, d3.max(data, datum => datum[0])]);
+    //     //xAxis.scale(xScale) 
+    //     d3.selectAll('circle') 
+    //       //.transition()
+    //       //.duration(1000)
+    //       //.delay(function (d,i) { return i*100})
+    //       .attr('cx',function(datum) { return xScale(datum[0]) })
+    //       .attr('y', function(datum) {
+    //         return yScale(datum[1]);
+    //       })
+    //       .attr('r', function(datum) {
+    //         return rScale(datum[2]);
+    //     });
+    // }
 
 
     d3.select("#queryInsurances").on("change", function() {
         let query = d3.select(this).property('value');
        
-        if (query == 1) {
-            //let d = d3.select(this).property('data');
-            console.log(query);
-            //updateData(dataset1);
-            xChange(data=dataset1);
-            debugger;
-        }
+        // if (query == 2) {
+        //     //let d = d3.select(this).property('data');
+        //     console.log(query);
+           
+        //     images.attr('x', function(datum, index) {
+        //         if ( Number(query) === index ) {
+        //             debugger;
+        //             d3.select(this).attr('x', function(datum, index) {
+        //                 if (index === 2) {
+        //                     debugger;
+        //                     return datum[3];
+        //                 }
+        //             });
+        //         }
+        //     })
+            
+        // }    
 
         // if (v == 30) {
         //   update(dataset3)
@@ -238,34 +252,34 @@
         
     });  
     
-    const insuranceData = [
-        "car insurance", 
-        "pet insurance", 
-        'life insurance',
-        'house insurance',
-        'general liability',
-        'boat insurance'
-    ];
+    // const insuranceData = [
+    //     "car insurance", 
+    //     "pet insurance", 
+    //     'life insurance',
+    //     'house insurance',
+    //     'general liability',
+    //     'boat insurance'
+    // ];
 
-    const select = d3.select('#queryInsurances')
-        .append('select')
-        .attr('class','select')
-        .on('change',onchange)
+    // const select = d3.select('#queryInsurances')
+    //     .append('select')
+    //     .attr('class','select')
+    //     .on('change',onchange)
 
-    const options = select
-        .selectAll('option')
-        .data(insuranceData)
-        .enter()
-        .append('option')
-        .text(function (d) { 
-            return d; 
-        });
+    // const options = select
+    //     .selectAll('option')
+    //     .data(insuranceData)
+    //     .enter()
+    //     .append('option')
+    //     .text(function (d) { 
+    //         return d; 
+    //     });
 
-    function onchange() {
-        selectValue = d3.select('select').property('value')
-        d3.select('body')
-            .append('p')
-            .text(selectValue + ' is the last selected option.')
-    };
+    // function onchange() {
+    //     selectValue = d3.select('select').property('value')
+    //     d3.select('body')
+    //         .append('p')
+    //         .text(selectValue + ' is the last selected option.')
+    // };
 
 })();
