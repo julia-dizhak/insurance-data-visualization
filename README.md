@@ -2,6 +2,8 @@
 
 ## "Risk score" team
 
+repo created during [Hack'n Lead 16-17.07.2018](http://hackandlead.com/)
+
 [demo](https://julia-dizhak.github.io/insurance-data-visualization/index.html)
 
 [presentation](https://julia-dizhak.github.io/insurance-data-visualization/docs/Risk-Score.pdf)
@@ -16,6 +18,7 @@ The system uses clustering to propose a personalized risk landscape based on dat
 
 In order to request the correct questions, decisions trees could be used.
 
+
 ## technologies
 * d3.js
 * javascript
@@ -25,5 +28,7 @@ In order to request the correct questions, decisions trees could be used.
 ## requirements
 * Chrome Version 67
 
+
 ### Todo
 * use voice recognition to choose activity
+* discount should be applied only after choose second type of mortgage

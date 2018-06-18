@@ -224,17 +224,20 @@
         priceArrays.push(element[2]);
         let sum = priceArrays.reduce((a, b) => a + b, 0);
         const sumFormat = sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "'");
-       
-
         let totalElement = $price.text(sumFormat);
         let totalPrice = Number(sum);
 
         // savings
         const $saveCostElement = $('#save-price');
-        const discount = 0.15;
+        let discount = 0.15;
         let saveCost = totalPrice * discount;
         totalPrice = totalPrice - saveCost;
 
+        // if (priceArrays.length < 1) {
+        //     discount = 1;   
+        //     console.log(discount);
+        // }
+        
         const totalPriceFormat = totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "'");
     
         $saveCostElement.text(totalPriceFormat);
