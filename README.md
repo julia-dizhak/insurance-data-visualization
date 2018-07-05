@@ -10,7 +10,7 @@ repo created during [Hack'n Lead 16-17.07.2018](http://hackandlead.com/) first S
 
 [data](https://julia-dizhak.github.io/insurance-data-visualization/docs/data.txt)
 
-[certification](https://julia-dizhak.github.io/insurance-data-visualization/docs/Yuliia-Dizhak-RiskScore.ppt)
+[certification](https://julia-dizhak.github.io/insurance-data-visualization/docs/Yuliia-Dizhak-RiskScore.pdf)
 
 
 ## Idea
