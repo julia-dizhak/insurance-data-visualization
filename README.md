@@ -10,6 +10,8 @@ repo created during [Hack'n Lead 16-17.07.2018](http://hackandlead.com/) first S
 
 [data](https://julia-dizhak.github.io/insurance-data-visualization/docs/data.txt)
 
+[certification](https://julia-dizhak.github.io/insurance-data-visualization/docs/Hack'n'Lead_Yuliia Dizhak_RiskScore)
+
 
 ## Idea
 This framework will allow users to have a clear and unified view of the Risks that they should be specifically concerned about, and therefore, propose them a personalized insurance coverage.
