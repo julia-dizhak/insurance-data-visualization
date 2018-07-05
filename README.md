@@ -2,7 +2,7 @@
 
 ## "Risk score" team
 
-repo created during [Hack'n Lead 16-17.07.2018](http://hackandlead.com/)
+repo created during [Hack'n Lead 16-17.07.2018](http://hackandlead.com/) first Switzerland women friendly Hackaton
 
 [demo](https://julia-dizhak.github.io/insurance-data-visualization/index.html)
 
